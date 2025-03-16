@@ -1,0 +1,119 @@
+﻿@model Employeedto
+@{
+    @Html.Hidden("EmployeeId",@ViewData["EmployeeId"])
+}
+<script>
+    console.log("EmployeeId: ", "@ViewData["EmployeeId"]");
+</script>
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+ 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+</head>
+
+<div class="row">
+    <div class="col-md-8 mx-auto rounded table-bordered ps-3">
+        <h2 class="text-center mb-5">Edit Record</h2>
+
+        <form id="updateForm" method="post" enctype="multipart/form-data">
+
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">Id</label>
+                <div class="col-sm-3">
+                    <input class="form-control-plaintext" readonly value="@ViewData["EmployeeId"]" />
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">Name</label>
+                <div class="col-sm-3">
+                    <input class="form-control" asp-for="Name" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">DateOfBirth</label>
+                <div class="col-sm-3">
+                    <input class="form-control" asp-for="DateOfBirth" />
+                    <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                </div>
+            </div>
+
+
+
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-3">
+                    <input class="form-control" asp-for="Email" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">Gender</label>
+                <div class="col-sm-3">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" asp-for="Gender" value="Male" />
+                        <label class="form-check-label">Male</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" asp-for="Gender" value="Female" />
+                        <label class="form-check-label">Female</label>
+                    </div>
+                    <span asp-validation-for="Gender" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">Qualification</label>
+                <div class="col-sm-3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="Qualifications[]" value="Diploma" />
+                        <label class="form-check-label">Diploma</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="Qualifications[]" value="Degree" />
+                        <label class="form-check-label">Degree</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="Qualifications[]" value="Master Degree" />
+                        <label class="form-check-label">Master Degree</label>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row mb-3">
+                <div class="offset-sm-2 col-sm-8">
+                    <img src="/Screenshots/@ViewData["Image"] " width="150"/>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">Image</label>
+                <div class="col-sm-4">
+                    <input class="form-control" asp-for="Image" />
+                    <span asp-validation-for="Image" class="text-danger"></span>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="offset-sm-4 col-sm-2 d-grid">
+                    <button type="submit" class="btn btn-primary">Update</button> 
+                </div>
+                <div class="col-sm-2 d-grid">
+                    <a class="btn btn-success" asp-controller="Employee" asp-action="Index" role="button">Cancel</a> 
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
